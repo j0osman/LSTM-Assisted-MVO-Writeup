@@ -1,33 +1,75 @@
-# Enhanced Mean-Variance Optimization Using Multi-Branch LSTM
+# Enhanced Mean-Variance Optimization Using a Multi-Branch LSTM
 
-This repository contains a report detailing the development and performance evaluation of an enhanced mean-variance optimization strategy utilizing a multi-branch Long Short-Term Memory (LSTM) network for stock price prediction.
+This repository hosts a research write-up exploring the use of a custom multi-branch LSTM architecture within a mean-variance optimization (MVO) framework for portfolio construction.
 
-## Purpose
+The objective of this work was **not** to maximize backtest performance, but to evaluate whether architectural inductive bias—via asset-specific recurrent branches—can improve robustness, scalability, and stability under realistic financial constraints.
 
-The primary purpose of this report is to critically evaluate the integration of advanced machine learning techniques with traditional portfolio optimization methods. It provides a balanced analysis of the methodology, challenges, and comparative performance results between standard and enhanced approaches.
+---
+
+## Motivation
+
+Advanced machine learning models are often assumed to outperform classical portfolio optimization techniques. In practice, however, increased model complexity can introduce fragility, overfitting, and sensitivity to regime shifts.
+
+This project investigates that trade-off explicitly by:
+- comparing a predictive Multi-Branch LSTM–driven MVO pipeline against a tuned standard MVO baseline,
+- prioritizing failure analysis and robustness over headline performance metrics,
+- and critically evaluating when added complexity is unjustified.
+
+---
 
 ## Key Findings
 
-*   **Standard MVO outperforms Enhanced MVO**: A simpler mean-variance optimization strategy with monthly rebalancing achieved superior results
-*   **Computational efficiency as primary advantage**: The Multi-Branch LSTM approach offers efficient portfolio weight calculation for large-scale optimization
-*   **Mixed performance results**: Enhanced MVO only marginally surpasses market average returns despite added complexity
-*   **Robust standard approach**: Standard MVO demonstrated strong risk-adjusted performance with a Sharpe ratio of 2.90
+- **Standard MVO outperformed the enhanced approach** under realistic rebalancing and transaction cost assumptions, achieving superior risk-adjusted returns.
+- **Architectural complexity did not reliably translate to better portfolio outcomes**, highlighting the limits of predictive modeling in noisy financial environments.
+- **The primary advantage of the Multi-Branch LSTM lies in computational structure**, enabling efficient weight computation for larger asset universes when covariance estimates are precomputed.
+- Careful design choices—particularly around loss functions, normalization, and training dynamics—had a greater impact on stability than model expressiveness alone.
+
+---
+
+## Research Emphasis
+
+This work focused on **understanding failure modes**, including:
+- loss function sensitivity under noisy targets,
+- normalization strategies that preserve temporal autocorrelation,
+- training instabilities introduced by scheduling and optimization choices,
+- and degradation under regime changes.
+
+Several architectural and training variants were explored but are omitted for brevity, as they exhibited similar fragility characteristics.
+
+---
 
 ## Model Confidentiality
 
-**Please note**: The source code and specific details of the model architecture are not included in this repository. Due to the model's scalability and ongoing development, it is kept confidential.
+To protect ongoing research and scalability considerations:
+- source code,
+- proprietary data,
+- and exact architectural specifications
 
-## Report Contents
+are intentionally excluded.
 
-The report covers the following topics:
+The accompanying report emphasizes **reasoning, experimental design, and conclusions**, rather than implementation details.
 
-*   Research and Model Selection
-*   Multi-Branch LSTM Architecture
-*   Data Preprocessing and Model Training
-*   Scalability and Liquidity Considerations
-*   Comparative Performance Analysis: Standard vs. Enhanced MVO
-*   Key Takeaways and Limitations
-*   Future Work and Potential Improvements
+---
+
+## Contents of the Report
+
+The full write-up covers:
+- Model selection rationale and architectural design
+- Data preprocessing and training considerations
+- Failure modes and design trade-offs
+- Scalability and liquidity constraints
+- Comparative analysis: Standard vs. Enhanced MVO
+- Key takeaways and limitations
+- Directions for future research
+
+---
+
+## Takeaway
+
+This project demonstrates that in portfolio optimization, **robustness and simplicity often dominate expressive modeling**, and that rigorous evaluation of when *not* to use machine learning is as valuable as successful application.
+
+The primary contribution of this work lies in **architectural reasoning and failure analysis**, rather than performance gains.
+
 
 ## Author
 
